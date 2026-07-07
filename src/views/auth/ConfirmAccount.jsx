@@ -12,7 +12,7 @@ export default function ConfirmAccount() {
 
         async function confirmAccount() {
             try {
-                const { data } = await api(`/confirm/${token}`);
+                const { data } = await api(`/confirm-account/${token}`);
                 setAlert({
                     message: data.message,
                     type: "success"

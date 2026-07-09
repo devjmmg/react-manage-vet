@@ -57,7 +57,7 @@ export default function register() {
             if (error.response) {
                 setAlert(error.response.data);
             } else {
-                setAlert({ error: "No fue posible conectar con el servidor." });
+                setAlert({ message: "No fue posible conectar con el servidor.", type: 'error' });
             }
         }
     }

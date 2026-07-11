@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Alert from "../../components/Alert";
 import api from "../../config/axios"
+import useAuth from "../../hooks/useAuth";
 
 export default function Login() {
 
+    const { authUser } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [alert, setAlert] = useState({});
+    const navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -33,6 +36,8 @@ export default function Login() {
                 password
             });
             localStorage.setItem('token', token);
+            await authUser();
+            navigate('/');
         } catch (error) {
             if (error.response) {
                 setAlert(error.response.data);

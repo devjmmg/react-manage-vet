@@ -1,6 +1,17 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export default function GuestLayout() {
+
+    const { auth, loading } = useAuth();
+    
+    if (loading) {
+        return <p>Cargando...</p>
+    }
+
+    if (auth._id) {
+        return <Navigate to="/" />;
+    }
 
     const path = useLocation().pathname;
     let bg = "bg-amber-200";

@@ -6,7 +6,11 @@ export default function GuestLayout() {
     const { auth, loading } = useAuth();
     
     if (loading) {
-        return <p>Cargando...</p>
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="h-12 w-12 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin"></div>
+            </div>
+        );
     }
 
     if (auth._id) {

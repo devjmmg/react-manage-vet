@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const authUser = async () => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('AUTH_TOKEN');
         if (!token) {
             setLoading(false);
             return;
@@ -34,13 +34,19 @@ const AuthProvider = ({ children }) => {
         authUser();
     }, []);
 
+    const logout = () => {
+        localStorage.removeItem('AUTH_TOKEN');
+        setAuth({});
+    }
+
     return (
         <AuthContext.Provider
             value={{
                 auth,
                 setAuth,
                 authUser,
-                loading
+                loading,
+                logout
             }}
         >
             {children}

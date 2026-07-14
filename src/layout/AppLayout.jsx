@@ -1,5 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import Header from "../components/admin/Header";
+import Footer from "../components/admin/Footer";
 
 export default function AppLayout() {
 
@@ -19,8 +21,11 @@ export default function AppLayout() {
 
     return (
         <>
-            AppLayout
-            <Outlet />
+            <Header />
+                <main>
+                    <Outlet />
+                </main>
+            <Footer />
         </>
     )
 }

@@ -35,7 +35,7 @@ export default function Login() {
                 email,
                 password
             });
-            localStorage.setItem('token', token);
+            localStorage.setItem('AUTH_TOKEN', token);
             await authUser();
             navigate('/');
         } catch (error) {

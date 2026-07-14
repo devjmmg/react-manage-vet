@@ -8,6 +8,7 @@ import ConfirmAccount from "./src/views/auth/ConfirmAccount";
 import ResetPassword from "./src/views/auth/ResetPassword";
 import Dashboard from "./src/views/admin/Dashboard";
 import Profile from "./src/views/admin/Profile";
+import Pet from "./src/views/admin/Pet";
 
 const router = createBrowserRouter([
     {
@@ -43,10 +44,10 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Dashboard />
             },
-            // {
-            //     path: "pets",
-            //     element: <Pets />
-            // },
+            {
+                path: "pets",
+                element: <Pet />
+            },
             {
                 path: "profile",
                 element: <Profile />

@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 export default function GuestLayout() {
 
     const { auth, loading } = useAuth();
+    const path = useLocation().pathname;
     
     if (loading) {
         return (
@@ -17,7 +18,7 @@ export default function GuestLayout() {
         return <Navigate to="/" />;
     }
 
-    const path = useLocation().pathname;
+    
     let bg = "bg-amber-200";
 
     if (path === "/register") {

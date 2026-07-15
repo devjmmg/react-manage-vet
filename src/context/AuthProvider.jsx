@@ -23,8 +23,7 @@ const AuthProvider = ({ children }) => {
             const { data } = await api('/profile', config);
             setAuth(data);
         } catch (error) {
-            setAuth({});
-            console.log(error);
+            logout();
         } finally {
             setLoading(false);
         }

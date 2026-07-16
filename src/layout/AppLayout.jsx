@@ -20,12 +20,12 @@ export default function AppLayout() {
     }
 
     return (
-        <>
+        <div className="h-screen flex flex-col">
             <Header />
-                <main>
-                    <Outlet />
-                </main>
+            <main className="flex-1 md:overflow-hidden">
+                <Outlet />
+            </main>
             <Footer />
-        </>
+        </div>
     )
 }

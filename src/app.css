@@ -4,3 +4,18 @@
 body {
     font-family: "Inter", sans-serif;
 }
+
+/* Chrome, Edge y Safari */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firefox */
+.scrollbar-hidden {
+    scrollbar-width: none;
+}
+
+/* IE y Edge antiguo */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+}

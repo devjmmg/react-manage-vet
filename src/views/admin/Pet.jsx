@@ -87,7 +87,7 @@ export default function Pet() {
     }, [pet]);
 
     useEffect(() => {
-        if (!alert.success) return;
+        if (!alert) return;
 
         const timer = setTimeout(() => {
             setAlert({});
@@ -95,7 +95,7 @@ export default function Pet() {
 
         return () => clearTimeout(timer);
 
-    }, [alert.success]);
+    }, [alert]);
     
     return (
         <div className="flex flex-col md:flex-row gap-4 p-4 h-full">

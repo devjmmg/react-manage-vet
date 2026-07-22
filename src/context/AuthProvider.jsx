@@ -7,36 +7,59 @@ const AuthProvider = ({ children }) => {
 
     const [ auth, setAuth ] = useState({});
     const [loading, setLoading] = useState(true);
-
+    
     const authUser = async () => {
         const token = localStorage.getItem('AUTH_TOKEN');
-        if (!token) {
-            setLoading(false);
-            return;
-        }
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }
+        if (!token) {
+            setLoading(false);
+            return;
+        }
         try {
             const { data } = await api('/profile', config);
             setAuth(data);
         } catch (error) {
-            logout();
+            if (error.response?.status === 401) {
+                logout();
+            }
         } finally {
             setLoading(false);
+        }
+    }
+
+    const logout = () => {
+        localStorage.removeItem('AUTH_TOKEN');
+        setAuth({});
+    }
+
+    const update = async profile => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        if (!token) {
+            return;
+        }
+        
+        try {
+            const { data } = await api.put(`/profile`, profile, config);
+            setAuth(data.user);
+            console.log(data.user);
+            return data;
+        } catch (error) {
+            throw error;
         }
     }
 
     useEffect( () => {
         authUser();
     }, []);
-
-    const logout = () => {
-        localStorage.removeItem('AUTH_TOKEN');
-        setAuth({});
-    }
 
     return (
         <AuthContext.Provider
@@ -45,7 +68,8 @@ const AuthProvider = ({ children }) => {
                 setAuth,
                 authUser,
                 loading,
-                logout
+                logout,
+                update
             }}
         >
             {children}

@@ -35,7 +35,7 @@ export default function GuestLayout() {
         <>
             <main className="md:min-h-screen md:flex w-full">
                 <div className={`wfull md:w-1/2 flex justify-center items-center ${bg} bg-`}>
-                    <img src="../../public/img/logo.svg" className="w-full md:w-3xl" alt="" />
+                    <img src="/img/logo.svg" className="w-full md:w-3xl" alt="Logo" />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8">
                     <Outlet />

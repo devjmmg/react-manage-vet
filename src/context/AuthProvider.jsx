@@ -50,9 +50,28 @@ const AuthProvider = ({ children }) => {
         try {
             const { data } = await api.put(`/profile`, profile, config);
             setAuth(data.user);
-            console.log(data.user);
             return data;
         } catch (error) {
+            throw error;
+        }
+    }
+
+    const updatePassword = async info => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        if (!token) {
+            return;
+        }
+        
+        try {
+            const { data } = await api.put(`/profile/password`, info, config);
+            return data;
+        } catch (error) {
+            console.log(error.response);
             throw error;
         }
     }
@@ -69,7 +88,8 @@ const AuthProvider = ({ children }) => {
                 authUser,
                 loading,
                 logout,
-                update
+                update,
+                updatePassword
             }}
         >
             {children}

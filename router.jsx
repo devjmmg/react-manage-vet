@@ -10,6 +10,7 @@ import Dashboard from "./src/views/admin/Dashboard";
 import Profile from "./src/views/admin/Profile";
 import Pet from "./src/views/admin/Pet";
 import { PetProvider } from "./src/context/PetProvider";
+import ChangePassword from "./src/views/admin/ChangePassword";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <Profile />
+            },
+            {
+                path: "change-password",
+                element: <ChangePassword />
             }
         ]
     }

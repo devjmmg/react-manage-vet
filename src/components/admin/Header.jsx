@@ -12,7 +12,7 @@ export default function Header() {
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
 
                 <Link to='/'>
-                    <img src="/public/img/logo.svg" alt="Logo" className="w-10 h-10" />
+                    <img src="/img/logo.svg" alt="Logo" className="w-10 h-10" />
                 </Link>
                 <nav className="flex flex-col md:flex-row items-center gap-3 text-white">
                     <Link to="/">Dashboard</Link>

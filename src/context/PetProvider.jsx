@@ -22,7 +22,7 @@ const PetProvider = ({children}) => {
             const { data } = await api('/pets', config);
             setPets(data.pets);
         } catch (error) {
-            console.log(error);
+            console.log(error.response);
         } finally {
             setLoading(false);
         }

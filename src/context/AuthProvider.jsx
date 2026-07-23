@@ -71,7 +71,6 @@ const AuthProvider = ({ children }) => {
             const { data } = await api.put(`/profile/password`, info, config);
             return data;
         } catch (error) {
-            console.log(error.response);
             throw error;
         }
     }
